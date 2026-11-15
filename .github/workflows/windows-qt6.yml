@@ -140,6 +140,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           path: artifacts
+          merge-multiple: true
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v3
         with:
@@ -150,4 +151,4 @@ jobs:
           prerelease: false
           fail_on_unmatched_files: true
           files: |
-            artifacts/**/*-release-*.zip
+            artifacts/*.zip
