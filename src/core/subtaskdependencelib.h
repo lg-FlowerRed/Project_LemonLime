@@ -14,7 +14,9 @@
 
 const int maxDependValue = 1000000;
 
-inline int stateToStatus(ResultState in, int score, int maxScore) {
+// onlyTLE == false: original behavior, any zero-score result blocks dependents.
+// onlyTLE == true: only TimeLimitExceeded blocks dependents; WA/MLE/RE/... do not.
+inline int stateToStatus(ResultState in, int score, int maxScore, bool onlyTLE = false) {
 	if (in == CorrectAnswer)
 		return maxDependValue;
 
@@ -22,7 +24,7 @@ inline int stateToStatus(ResultState in, int score, int maxScore) {
 		return maxDependValue;
 
 	if (score <= 0)
-		return -1;
+		return (onlyTLE && in != TimeLimitExceeded) ? maxDependValue : -1;
 
 	return 1ll * maxDependValue * score / maxScore;
 }

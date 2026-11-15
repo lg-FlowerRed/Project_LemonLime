@@ -527,8 +527,9 @@ int TaskJudger::judge() {
 			score[i][j] = caseJudger->getScore();
 			result[i][j] = caseJudger->getResult();
 			overallStatus[i] =
-			    qMin(overallStatus[i], stateToStatus(caseJudger->getResult(), caseJudger->getScore(),
-			                                         caseJudger->getFullScore()));
+			    qMin(overallStatus[i],
+			         stateToStatus(caseJudger->getResult(), caseJudger->getScore(),
+			                       caseJudger->getFullScore(), settings->getSubtaskDependencyOnlyTLE()));
 			message[i][j] = caseJudger->getMessage();
 			caseJudger.reset();
 			int nowScore = score[i][j];

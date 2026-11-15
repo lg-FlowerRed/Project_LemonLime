@@ -784,6 +784,16 @@
      </item>
     </layout>
    </item>
+   <item row="12" column="0" colspan="4">
+    <widget class="QCheckBox" name="subtaskDependencyOnlyTLE">
+     <property name="text">
+      <string>子任务依赖仅在被依赖测试点 TLE 时触发</string>
+     </property>
+     <property name="toolTip">
+      <string>勾选后：只有被依赖的测试点超时（TLE）时，依赖它的测试点才会被跳过。不勾选（默认）：被依赖的测试点只要得 0 分（WA、MLE、RE 等）也会跳过依赖它的测试点。</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
@@ -798,6 +808,7 @@
   <tabstop>outputFileExtensions</tabstop>
   <tabstop>languageComboBox</tabstop>
   <tabstop>preventSleepWhileJudging</tabstop>
+  <tabstop>subtaskDependencyOnlyTLE</tabstop>
  </tabstops>
  <resources/>
  <connections/>
