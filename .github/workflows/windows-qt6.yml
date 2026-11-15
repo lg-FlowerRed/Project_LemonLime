@@ -127,7 +127,6 @@ jobs:
         with:
           name: ${{ steps.artifact_name.outputs.name }}
           path: ${{ steps.artifact_name.outputs.name }}.zip
-          archive: false
           if-no-files-found: error
 
   release:
@@ -141,6 +140,8 @@ jobs:
         with:
           path: artifacts
           merge-multiple: true
+      - name: List downloaded artifacts
+        run: ls -lR artifacts
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v3
         with:
